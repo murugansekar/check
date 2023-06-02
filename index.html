@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AI GirlFriend</title>
+  </head>
+
+
+<body>
+<h1>AI GirlFriend</h1>
+
+<div class="center">
+  <button id="start_button" onclick="startButton(event)">
+    Start
+  </button>  
+</div>
+
+<div id="info">
+    <p id="info_speak_now">Speak now.</p>
+    <p id="info_no_speech">No speech was detected. You may need to adjust your microphone settings.</p>
+    <p id="info_no_microphone" style="display:none">No microphone was found. Ensure that a microphone is installed and that settings are configured correctly.</p>
+    <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+    <p id="info_denied">Permission to use microphone was denied.</p>
+    <p id="info_blocked">Permission to use microphone is blocked.</p>
+    <p id="info_upgrade">Web Speech API is not supported by this browser.</p>
+</div>
+
+<div class="center">
+  <p>
+  <div id="div_language">
+    <select id="select_language" onchange="updateCountry()"></select>
+    &nbsp;&nbsp;
+    <select id="select_dialect"></select>
+  </div>
+</div>
+
+<div id="results">
+    <span id="final_span" class="final"></span>
+    <span id="interim_span" class="interim"></span>
+    <p>
+</div>
+
+<script src = "app.js"></script>
+</body>
+</html>
