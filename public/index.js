@@ -40,7 +40,7 @@ if (!('webkitSpeechRecognition' in window)) {
     start_button.style.visibility = 'hidden';
     showInfo('info_upgrade');
 } else {
-  start_button.style.display = 'inline-block';
+  //start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
