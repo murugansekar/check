@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require('openai');
 exports.getAIResponse = async (req, res) => {
     try {
         const configuration = new Configuration({
-            apiKey: process.env.AiKey;
+            apiKey: process.env.AiKey
         });
         const openai = new OpenAIApi(configuration);
         const question = req.body.question;
