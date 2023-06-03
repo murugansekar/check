@@ -116,17 +116,17 @@ if (!('webkitSpeechRecognition' in window)) {
         headers: {
           accept: 'audio/mpeg', // Set the expected response type to audio/mpeg.
           'content-type': 'application/json', // Set the content type to application/json.
-          'xi-api-key': process.env.ElevenLabsKey, // Set the API key in the headers.
+          'xi-api-key': e7c40870cbaabac4f03ca5a3a2ec56f8, // Set the API key in the headers.
         },
         data: {
           text: AIResponse, // Pass in the inputText as the text to be converted to speech.
         },
         responseType: 'arraybuffer', // Set the responseType to arraybuffer to receive binary data as response.
       };
-      console.log('1');
+      //console.log('1');
       // Send the API request using Axios and wait for the response.
       const speechDetails = await axios.request(options);
-      console.log('2', speechDetails);
+      //console.log('2', speechDetails);
       // Return the binary audio data received from the API response.
       const data = speechDetails.data;
 
