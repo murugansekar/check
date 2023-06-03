@@ -123,10 +123,10 @@ if (!('webkitSpeechRecognition' in window)) {
         },
         responseType: 'arraybuffer', // Set the responseType to arraybuffer to receive binary data as response.
       };
-      //console.log('1');
+      console.log('1');
       // Send the API request using Axios and wait for the response.
       const speechDetails = await axios.request(options);
-      //console.log('2');
+      console.log('2', speechDetails);
       // Return the binary audio data received from the API response.
       const data = speechDetails.data;
 
