@@ -108,15 +108,13 @@ if (!('webkitSpeechRecognition' in window)) {
     if(final_transcript.length > 1){
       const AI = await axios.post("https://ai-girlfriend-check.onrender.com/get-ai-response", { question : final_transcript});
       const AIResponse = AI.data;
-      //const AIResponse = "I'm doing good";
-      //final_span.innerHTML = linebreak(AIResponse);
       const options = {
         method: 'POST',
         url: 'https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM?optimize_streaming_latency=0',
         headers: {
-          accept: 'audio/mpeg', // Set the expected response type to audio/mpeg.
-          'content-type': 'application/json', // Set the content type to application/json.
-          'xi-api-key': e7c40870cbaabac4f03ca5a3a2ec56f8, // Set the API key in the headers.
+          accept: 'audio/mpeg', // Set the expected response type to audio/mpeg
+          'content-type': 'application/json', // Set the content type to application/json
+          'xi-api-key': e7c40870cbaabac4f03ca5a3a2ec56f8, // Set the API key in the headers
         },
         data: {
           text: AIResponse, // Pass in the inputText as the text to be converted to speech.
