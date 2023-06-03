@@ -9,13 +9,26 @@
   </head>
 
 
-<body>
+<body style="background-color:rgb(239, 228, 238);text-align:center">
 <h1>AI GirlFriend</h1>
+  
+<select name="mode" id="mode">
+  <option value="normal" selected>Normal</option>
+  <option value="naughty">Naughty</option>
+</select>
+
+<br><br>
+<br><br>
+
 
 <div class="center">
   <button id="start_button" onclick="startButton(event)">
     Start
   </button>  
+  &emsp; &emsp; &emsp; &emsp;
+  <button id="start_button" style="height:100px;width:200px" onclick="startButton(event)">
+    Stop
+  </button>
 </div>
 
 <div id="info">
