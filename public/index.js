@@ -106,7 +106,7 @@ if (!('webkitSpeechRecognition' in window)) {
     // final_span.innerHTML = linebreak(final_transcript);
     // interim_span.innerHTML = linebreak(interim_transcript);
     if(final_transcript.length > 1){
-      const AI = await axios.post("http://127.0.0.1:3000/get-ai-response", { question : final_transcript});
+      const AI = await axios.post("https://ai-girlfriend-check.onrender.com/get-ai-response", { question : final_transcript});
       const AIResponse = AI.data;
       //const AIResponse = "I'm doing good";
       //final_span.innerHTML = linebreak(AIResponse);
