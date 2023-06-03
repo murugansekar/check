@@ -1,4 +1,6 @@
 const output = document.getElementById('output');
+const image = document.getElementById('imaged');
+const mode = document.getElementById('mode');
 
 var langs = [
     [ 
@@ -196,4 +198,9 @@ function showButtons(style) {
     return;
   }
   current_style = style;
+}
+
+
+function handleModeSelect(event) {
+  image.src = `${mode.value}.png`;
 }
