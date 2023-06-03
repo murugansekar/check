@@ -132,10 +132,12 @@ if (!('webkitSpeechRecognition' in window)) {
       // Create a URL for the blob object
       const url = URL.createObjectURL(blob);
       var sound      = document.createElement('audio');
+      sound.autoplay = true;
       sound.id       = 'audio-player';
       sound.controls = 'autoplay';
       sound.src      = url;
       sound.type     = 'audio/mpeg';
+      sound.style.visibility = 'hidden';
       output.appendChild(sound);
     }
     if (final_transcript || interim_transcript) {
