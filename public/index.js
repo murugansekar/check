@@ -173,6 +173,10 @@ function startButton(event) {
   start_timestamp = event.timeStamp;
 }
 
+function stopButton(event) {
+    console.log('Stopped');
+}
+
 //Used for showing all error messages
 function showInfo(s) {
   if (s) {
