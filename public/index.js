@@ -116,7 +116,7 @@ if (!('webkitSpeechRecognition' in window)) {
         headers: {
           accept: 'audio/mpeg', // Set the expected response type to audio/mpeg.
           'content-type': 'application/json', // Set the content type to application/json.
-          'xi-api-key': 'e7c40870cbaabac4f03ca5a3a2ec56f8', // Set the API key in the headers.
+          'xi-api-key': process.env.ElevenLabsKey, // Set the API key in the headers.
         },
         data: {
           text: AIResponse, // Pass in the inputText as the text to be converted to speech.
