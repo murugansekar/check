@@ -42,10 +42,8 @@ if (!('webkitSpeechRecognition' in window)) {
     start_button.style.visibility = 'hidden';
     showInfo('info_upgrade');
 } else {
-  //start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
-  recognition.interimResults = true;
 
   //starting with audio to text recognition
   recognition.onstart = function() {
@@ -64,11 +62,7 @@ if (!('webkitSpeechRecognition' in window)) {
       stopRecognition = true;
     }
     if (event.error == 'not-allowed') {
-      if (event.timeStamp - start_timestamp < 100) {
-        showInfo('info_blocked');
-      } else {
-        showInfo('info_denied');
-      }
+      showInfo('info_denied');
       stopRecognition = true;
     }
   };
@@ -76,37 +70,18 @@ if (!('webkitSpeechRecognition' in window)) {
   //Last stage of audio to text conversion process.
   recognition.onend = function() {
     recognizing = false; //stoping recognization if exists
-    if (stopRecognition) {
-      return; //skipping conversion process when we received any error.
-    }
-    if (!final_transcript) {
-      showInfo('info_start');
-      return; //when final_transcript is emplty, begining interaction again.
-    }
-    showInfo('');
-    if (window.getSelection) {
-      //Appending processed result to 'final_span' in html
-      window.getSelection().removeAllRanges();
-      var range = document.createRange();
-      range.selectNode(document.getElementById('final_span'));
-      window.getSelection().addRange(range);
-    }
+    startButton();
   };
 
   //Last before stage of audio to text conversion process.
   recognition.onresult = async function(event) {
-    var interim_transcript = '';
     //categorizing and appending result to final and interim_transcript whenever we get a result
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
-      } else {
-        interim_transcript += event.results[i][0].transcript;
       }
     }
   
-    // final_span.innerHTML = linebreak(final_transcript);
-    // interim_span.innerHTML = linebreak(interim_transcript);
     if(final_transcript.length > 1){
       const AI = await axios.post("https://ai-girlfriend-check.onrender.com/get-ai-response", { question : final_transcript});
       const AIResponse = AI.data;
@@ -142,7 +117,7 @@ if (!('webkitSpeechRecognition' in window)) {
       sound.style.visibility = 'hidden';
       output.appendChild(sound);
     }
-    if (final_transcript || interim_transcript) {
+    if (final_transcript) {
       showButtons('inline-block');
     }
   };
@@ -169,14 +144,15 @@ function startButton(event) {
   recognition.start();
   stopRecognition = false;
   final_span.innerHTML = '';
-  interim_span.innerHTML = '';
   showInfo('info_allow');
   showButtons('none');
-  start_timestamp = event.timeStamp;
 }
 
 function stopButton(event) {
-    console.log('Stopped');
+    stopRecognition = true;
+    recognition.stop();
+    recognition.abort();
+    window.location.reload();
 }
 
 //Used for showing all error messages
